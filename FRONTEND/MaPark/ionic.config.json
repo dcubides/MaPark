@@ -1,0 +1,7 @@
+{
+  "name": "MaPark",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

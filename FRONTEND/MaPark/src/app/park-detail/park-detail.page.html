@@ -1,0 +1,81 @@
+<ion-header no-border>
+    <ion-toolbar color="success">
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+        <ion-title>Detalle parque</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+<ion-content>
+
+
+	<div class="detaillBox" *ngIf="parkDetail">
+      <div class="detaillBox__img">
+          <div id="map"></div>
+      </div>
+      <div class="detaillBox__descripton">
+        <div class="detaillBox__descripton_data detaillBox__descripton_data-name">
+          {{parkDetail.nombre_Parque}}
+        </div>
+        <div class="detaillBox__descripton_data detaillBox__descripton_data-stars">
+
+        </div>
+        <div class="detaillBox__descripton_data detaillBox__descripton_data-address">
+          {{ parkDetail.localidad}}
+        </div>
+
+        <ion-fab vertical="top" horizontal="end" slot="fixed" >
+          <ion-fab-button href="tutorial/{{ parkDetail.id }}" color="success">
+            <ion-icon name="information-circle-outline"></ion-icon>
+          </ion-fab-button>
+          </ion-fab>
+      </div>
+
+    </div>
+  
+    
+  
+      <ion-list class="listResults" *ngIf="parkDetail">
+  
+        <ion-item>
+          <div>
+            <h3> UPZ: </h3>
+            <p> {{ parkDetail.uPZ  }} </p>
+          </div>
+        </ion-item>
+  
+        <ion-item>
+          <div>
+            <h3>Idebtificador:</h3>
+            <p> {{ parkDetail.identificador_parque }} </p>
+          </div>
+        </ion-item>
+        <ion-item>
+          <div>
+            <h3>Estrato:</h3>
+            <p> {{ parkDetail.estrato }} </p>
+          </div>
+        </ion-item>
+        <ion-item>
+          <div>
+            <h3>POT:</h3>
+            <p> {{ parkDetail.codigo_POT }} </p>
+          </div>
+        </ion-item>
+        <ion-item>
+          <div>
+            <h3>Certificación:</h3>
+            <p> {{ parkDetail.estado_Certificacion }} </p>
+          </div>
+        </ion-item>
+        <ion-item>
+          <div>
+            <h3>Clasificación:</h3>
+            <p> {{ parkDetail.clasificacion_Parque }} </p>
+          </div>
+        </ion-item>
+      </ion-list>
+  
+
+</ion-content>

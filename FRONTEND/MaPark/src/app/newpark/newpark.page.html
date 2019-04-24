@@ -1,0 +1,119 @@
+<ion-header no-border>
+    <ion-toolbar color="success">
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title>Nuevo parque</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+<ion-content>
+
+    <form [formGroup]="todo" (ngSubmit)="logForm()">
+
+         <ion-item>
+           <ion-icon name="arrow-dropright"></ion-icon>
+           <ion-label> Identificador parque en IDRD: </ion-label>
+           <ion-input type="text" formControlName="identificador_parque"></ion-input>
+         </ion-item>
+
+         <ion-item>
+           <ion-icon name="arrow-dropright"></ion-icon>
+           <ion-label> Estrato: </ion-label>
+          <ion-select placeholder="Seleccione" formControlName="estrato">
+              <ion-select-option value="1">1</ion-select-option>
+              <ion-select-option value="2">2</ion-select-option>
+              <ion-select-option value="3">3</ion-select-option>
+              <ion-select-option value="4">4</ion-select-option>
+              <ion-select-option value="5">5</ion-select-option>
+              <ion-select-option value="6">6</ion-select-option>
+              <ion-select-option value="7">7</ion-select-option>
+            </ion-select>
+        </ion-item>
+
+         <ion-item>
+             <ion-icon name="arrow-dropright"></ion-icon>
+             <ion-label> UPZ: </ion-label>
+             <ion-input type="number" formControlName="upz"></ion-input>
+           </ion-item>
+
+           <ion-item>
+               <ion-icon name="arrow-dropright"></ion-icon>
+               <ion-label> Localidad:</ion-label>
+               <ion-input type="text" formControlName="localidad"></ion-input>
+             </ion-item>
+
+         <ion-item>
+             <ion-icon name="arrow-dropright"></ion-icon>
+            <ion-label> Estado certificación: </ion-label>
+           <ion-select placeholder="Seleccione" formControlName="estado_Certificacion">
+               <ion-select-option value="CERTIFICADO">CERTIFICADO</ion-select-option>
+               <ion-select-option value="SIN CERTIFICAR">SIN CERTIFICAR</ion-select-option>
+             </ion-select>
+            </ion-item>
+
+         <ion-item>
+             <ion-icon name="arrow-dropright"></ion-icon>
+             <ion-label> Clasificación parque: </ion-label>
+            <ion-select placeholder="Seleccione" formControlName="clasificacion_Parque">
+                <ion-select-option value="Bolsillo">Bolsillo</ion-select-option>
+                <ion-select-option value="Vecinal">Vecinal</ion-select-option>
+                <ion-select-option value="Zonal Existente">Zonal Existente</ion-select-option>
+                <ion-select-option value="Zonal Propuesto">Zonal Propuesto</ion-select-option>
+              </ion-select>
+          </ion-item>
+
+          <ion-item>
+             <ion-icon name="arrow-dropright"></ion-icon>
+             <ion-label> Nombre del parque: </ion-label>
+             <ion-input type="text" formControlName="nombre_Parque"></ion-input>
+           </ion-item>
+
+             <ion-item>
+                 <ion-icon name="arrow-dropright"></ion-icon>
+                 <ion-label> Administración  del parque:</ion-label>
+                 <ion-input type="text" formControlName="administración_Parque"></ion-input>
+               </ion-item>
+
+            <ion-item>
+               <ion-icon name="arrow-dropright"></ion-icon>
+              <ion-label> Código localidad: </ion-label>
+             <ion-input type="number" formControlName="codigo_Localidad"></ion-input>
+           </ion-item>
+
+           <ion-item>
+               <ion-icon name="arrow-dropright"></ion-icon>
+               <ion-label> Código POT:</ion-label>
+              <ion-input type="number" formControlName="codigo_POT"></ion-input>
+            </ion-item>
+
+            <ion-item>
+               <ion-icon name="arrow-dropright"></ion-icon>
+               <ion-label> longitud: </ion-label>
+              <ion-input type="number" value="{{longitud}}" formControlName="coord_x"></ion-input>
+            </ion-item>
+
+            <ion-item>
+               <ion-icon name="arrow-dropright"></ion-icon>
+               <ion-label>latitud: </ion-label>
+              <ion-input type="number" value="{{latitud}}" formControlName="coord_y"></ion-input>
+            </ion-item>
+
+
+
+
+           <ion-fab vertical="bottom" horizontal="center">
+              <!-- <ion-button ion-fab mini (click)="cargarUbicacion()"><ion-icon name="map"></ion-icon></ion-button>-->
+          <ion-button ion-fab mini type="submit" [disabled]="!todo.valid" color="balanced" color="success" expand="full" ><ion-icon name="add"></ion-icon>Guardar</ion-button>
+         </ion-fab>
+
+           <!-- fab placed to the bottom end -->
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+      <ion-fab-button (click)="cargarUbicacion()" color="success">
+        <ion-icon name="map"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
+
+       </form>
+
+       </ion-content>

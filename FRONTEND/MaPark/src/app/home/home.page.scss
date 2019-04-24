@@ -1,0 +1,21 @@
+.welcome-card ion-img {
+  max-height: 35vh;
+  overflow: hidden;
+}
+
+
+#map {
+  width: 100%;
+  height: 100%;
+  display: block;
+
+}
+
+#botonarribademapa {
+  position: absolute;
+  z-index: 100;
+  bottom: 10px;
+  width: 50%;
+  right: 30px;
+  left: 30px;
+}

@@ -1,0 +1,25 @@
+<ion-content padding>
+  <div>
+      <h1 id="login-heading1" style="color:#A30046;text-align:center;">
+          <img class="imgLogo" width="200px" height="200px" src="../../assets/img/logo.png">
+      </h1>
+      <form (ngSubmit)=login(forma) #forma="ngForm">
+          <ion-item class="space">
+              <ion-input type="email" required ngModel #email="ngModel" name="email" placeholder="USUARIO" maxLength="200" minLength="3" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"></ion-input> <!-- pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"></ion-input> -->
+            </ion-item>
+            <ion-item class="space">
+              <ion-input shape="round" type="password" required ngModel #clave="ngModel" name="clave" placeholder="CONTRASENA" maxLength="200" minLength="3"></ion-input>
+          </ion-item>
+          <ion-item class="space">
+            <ion-label>
+              Mantener sesión iniciada
+            </ion-label>
+            <ion-toggle class="toggle" color="balanced" ngModel name="remember" #remember="ngModel" color="primary"></ion-toggle>
+          </ion-item>
+          <ion-button class="botonLogin" shape="round" type="submit" color="balanced" color="secondary" expand="full" [disabled]="!forma.valid">
+          Ingresar
+          </ion-button>
+      </form>
+  </div>
+
+</ion-content>
