@@ -1,0 +1,12 @@
+C:\Users\davidc\Documents\DESARROLLO\NETCORE\APIGEO\APIGEO\bin\Release\netcoreapp2.0\APIGEO.deps.json
+C:\Users\davidc\Documents\DESARROLLO\NETCORE\APIGEO\APIGEO\bin\Release\netcoreapp2.0\APIGEO.runtimeconfig.json
+C:\Users\davidc\Documents\DESARROLLO\NETCORE\APIGEO\APIGEO\bin\Release\netcoreapp2.0\APIGEO.runtimeconfig.dev.json
+C:\Users\davidc\Documents\DESARROLLO\NETCORE\APIGEO\APIGEO\bin\Release\netcoreapp2.0\APIGEO.dll
+C:\Users\davidc\Documents\DESARROLLO\NETCORE\APIGEO\APIGEO\bin\Release\netcoreapp2.0\APIGEO.pdb
+C:\Users\davidc\Documents\DESARROLLO\NETCORE\APIGEO\APIGEO\obj\Release\netcoreapp2.0\APIGEO.csproj.CoreCompileInputs.cache
+C:\Users\davidc\Documents\DESARROLLO\NETCORE\APIGEO\APIGEO\obj\Release\netcoreapp2.0\UserSecretsAssemblyInfo.cs
+C:\Users\davidc\Documents\DESARROLLO\NETCORE\APIGEO\APIGEO\obj\Release\netcoreapp2.0\APIGEO.AssemblyInfoInputs.cache
+C:\Users\davidc\Documents\DESARROLLO\NETCORE\APIGEO\APIGEO\obj\Release\netcoreapp2.0\APIGEO.AssemblyInfo.cs
+C:\Users\davidc\Documents\DESARROLLO\NETCORE\APIGEO\APIGEO\obj\Release\netcoreapp2.0\APIGEO.dll
+C:\Users\davidc\Documents\DESARROLLO\NETCORE\APIGEO\APIGEO\obj\Release\netcoreapp2.0\APIGEO.pdb
+C:\Users\davidc\Documents\DESARROLLO\NETCORE\APIGEO\APIGEO\obj\Release\netcoreapp2.0\APIGEO.csprojAssemblyReference.cache
