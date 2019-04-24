@@ -4,6 +4,9 @@ import { Events, ToastController } from '@ionic/angular';
 import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 import { UserInterface } from 'src/app/Interfaces/user-interface';
 import { promise } from 'protractor';
+import { environment } from '@environments/environment';
+import { resolve } from 'dns';
+
 
 @Injectable({
   providedIn: 'root'
@@ -14,10 +17,10 @@ user: {
   Nombre: string,
   Correo: string
 };
-
+private urlService = `${environment.urlDominio}/`; //url del servicio esta enviroments
 //private urlService = 'https://apigeolocalizacion.azurewebsites.net/';
 //private urlService = 'http://localhost:64289/';
-private urlService = 'http://192.168.1.8:64289/';
+//private urlService = 'http://192.168.1.8:64289/';
 
 //api/geoparques
 
@@ -88,6 +91,26 @@ getElementos() {
 
   return new Promise(resolve => {
     return this.http.get(urlService1)
+    .subscribe(
+      data => {
+        resolve(data);
+      }, err => {
+        if (err.status === 0 || err.status === 400) {
+          resolve(err.status);
+        } else {
+          resolve(null);
+        }
+      }
+    );
+  });
+}
+
+addElementos(coordenadas) {
+  console.log(coordenadas + 'dce');
+  const urlService1 = this.urlService + 'api/GEOCordenadas/';
+
+  return new Promise(resolve => {
+    return this.http.post(urlService1, coordenadas)
     .subscribe(
       data => {
         resolve(data);

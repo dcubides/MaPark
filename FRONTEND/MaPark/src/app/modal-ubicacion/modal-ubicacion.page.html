@@ -1,0 +1,34 @@
+<ion-header no-border>
+  <ion-toolbar color="success">
+    <ion-title>Ubicación de elemento</ion-title>
+    <ion-button  fill="clear" slot="end" (click)="cerrarModal()">
+      <ion-icon name="arrow-round-back"></ion-icon>
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+
+    <form [formGroup]="ubicacionForm" padding-right>
+      <ion-list>
+      <ion-item>
+        <ion-label>LAT:</ion-label>
+        <ion-input type="text" formControlName="coord_x" minlength="3" maxlength="20" value="{{latitud}}" required></ion-input>
+      </ion-item>
+
+      <ion-item>
+          <ion-label>LNG:</ion-label>
+          <ion-input type="text" formControlName="coord_y" minlength="3" maxlength="20" value="{{longitud}}" required></ion-input>
+        </ion-item>
+      </ion-list>
+        <ion-button type="submit"  expand="full"  (click)="cargarUbicacion()">
+            <ion-icon name="locate"></ion-icon>  
+          Obtener ubicación elemento
+          </ion-button>
+
+        <ion-button type="submit"  expand="full" [disabled]="!ubicacionForm.valid" (click)="guardarUbicacionElemento()">
+          Guardar ubicación elemento
+        </ion-button>
+    </form>
+
+</ion-content>

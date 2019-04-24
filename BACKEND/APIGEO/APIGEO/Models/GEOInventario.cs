@@ -10,10 +10,11 @@ namespace APIGEO.Models
         public int Id { get; set; }
         public int ParqueId { get; set; }
         public int ElementoID { get; set; }
-        public string ElementoTipo { get; set; }
+        public string Estado { get; set; }
+        public string Observaciones { get; set; }
 
 
-     //   public List<GEOElementos> Elementos { get; set; }
+        //   public List<GEOElementos> Elementos { get; set; }
 
 
     }

@@ -25,11 +25,14 @@ const routes: Routes = [
    loadChildren: './park-detail/park-detail.module#ParkDetailPageModule'
    },
   { path: 'tutorial/:Id',
-   loadChildren: './inventario/tutorial/tutorial.module#TutorialPageModule' 
+   loadChildren: './inventario/tutorial/tutorial.module#TutorialPageModule'
   },
   { path: 'inventario/:Id',
-   loadChildren: './inventario/inventario/inventario.module#InventarioPageModule' 
-  }
+   loadChildren: './inventario/inventario/inventario.module#InventarioPageModule'
+  },
+  { path: 'modal-ubicacion',
+   loadChildren: './modal-ubicacion/modal-ubicacion.module#ModalUbicacionPageModule' }
+
 ];
 
 @NgModule({

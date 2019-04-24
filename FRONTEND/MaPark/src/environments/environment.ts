@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  //urlDominio: 'http://localhost:64289'
-  urlDominio: 'http://192.168.1.8:64289'
+  urlDominio: 'http://localhost:64289'
+  //urlDominio: 'http://192.168.1.8:64289'
 };
 
 /*

@@ -24,7 +24,7 @@ namespace APIGEO.Controllers
         [HttpGet]
         public IEnumerable<GEOInventario> GetGEOInventario()
         {
-            return _context.GEOInventario; //.Include(i => i.Elementos).ToList();
+            return _context.GEOInventario;
         }
 
         // GET: api/GEOInventarios/5

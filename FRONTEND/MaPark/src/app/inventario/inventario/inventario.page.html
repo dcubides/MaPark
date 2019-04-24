@@ -8,4 +8,48 @@
   </ion-header>
 <ion-content>
 
+    <form [formGroup]="todo" (ngSubmit)="logForm()">
+
+        <ion-input type="hidden" value="{{id}}" formControlName="idparque"></ion-input>
+        <ion-item>
+            <ion-icon name="arrow-dropright"></ion-icon>
+            <ion-label> Elemento: </ion-label>
+           <ion-select placeholder="Seleccione" formControlName="elemento">
+               <ion-select-option *ngFor="let item of Elementos" value="{{item.id}}">{{ item.elemento }}</ion-select-option>
+             </ion-select>
+         </ion-item>
+
+         <ion-item>
+            <ion-icon name="arrow-dropright"></ion-icon>
+            <ion-label> Estado: </ion-label>
+           <ion-select placeholder="Seleccione" formControlName="estado">
+               <ion-select-option value="Bueno">Bueno</ion-select-option>
+               <ion-select-option value="Regular">Regular</ion-select-option>
+               <ion-select-option value="Malo">Malo</ion-select-option>
+             </ion-select>
+         </ion-item>
+
+         <ion-item>
+            <ion-icon name="arrow-dropright"></ion-icon>
+            <ion-label> Observaciones: </ion-label>
+            <ion-textarea placeholder="Texto" formControlName="observaciones"></ion-textarea>
+         </ion-item>
+
+         <ion-fab vertical="bottom" horizontal="center">
+            <!-- <ion-button ion-fab mini (click)="cargarUbicacion()"><ion-icon name="map"></ion-icon></ion-button>-->
+        <ion-button ion-fab mini type="submit" expand="full" [disabled]="!todo.valid" color="balanced" color="success" expand="full" ><ion-icon name="add"></ion-icon>Guardar</ion-button>
+       </ion-fab>
+
+         <!-- fab placed to the bottom end 
+        <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+            <ion-fab-button (click)="cargarUbicacion()" color="success">
+              <ion-icon name="locate"></ion-icon>
+            </ion-fab-button>
+          </ion-fab>-->
+
+
+ 
+    
+    </form>
+
 </ion-content>

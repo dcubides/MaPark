@@ -9,6 +9,7 @@ namespace APIGEO.Models
     {
         public int Id { get; set; }
         public string Elemento { get; set; }
+        public string Tipo { get; set; }
 
         //public int ElementoID { get; set; }
         //public GEOInventario Inventario { get; set; }
