@@ -5,6 +5,7 @@ import { LoadingController, ToastController, AlertController } from '@ionic/angu
 import { ServiceAPIService } from '../services/service-api.service';
 import { IParques } from '../Interfaces/iparques';
 import { Storage } from '@ionic/storage';
+import { IElementos } from '../Interfaces/ielementos';
 
 declare var google;
 @Component({
@@ -18,6 +19,9 @@ export class ParkDetailPage implements OnInit {
   mapRef = null;
   parkDetail: IParques;
   errorMessage: any = '';
+  Elementos: IElementos[] = [];
+  Elemento: IElementos;
+  Tipo: string;
 
   constructor(
     private routes: ActivatedRoute,
@@ -32,7 +36,88 @@ export class ParkDetailPage implements OnInit {
   ngOnInit() {
     this.id = this.routes.snapshot.paramMap.get('Id');
     this.LoadPark(this.id);
+    this.LoadElementos();
   }
+
+  async LoadElementos() {
+    const loading = await this.loadingCtrl.create({
+      message: 'Cargando...',
+      spinner: 'bubbles'
+    });
+    loading.present();
+    let dataa = await this.parqueservice.getElementos()
+        .then(async (data: any) => {
+        loading.dismiss();
+        if (data!=null)
+           {
+              this.Elementos = data;
+           }
+           else
+           {
+            let toast = await this.toastCtrl.create({
+                message: 'No existen elementos',
+                duration: 3000,
+                position: 'middle'
+              });
+            toast.present();
+           }
+        });
+  }
+
+  async cargarElemento() {
+
+    const loading = await this.loadingCtrl.create({
+      message: 'Cargando...',
+      spinner: 'bubbles'
+    });
+    loading.present();
+    let dataa = await this.parqueservice.getInventarioId(this.id, this.Elemento.id)
+        .then(async (data: any) => {
+        loading.dismiss();
+        if (data!=null)
+           {
+              this.Elementos = data;
+           }
+           else
+           {
+            let toast = await this.toastCtrl.create({
+                message: 'No existen elementos',
+                duration: 3000,
+                position: 'middle'
+              });
+            toast.present();
+           }
+        });
+
+  }
+
+  async LoadElemento(Id) {
+    const loading = await this.loadingCtrl.create({
+      message: 'Cargando...',
+      spinner: 'bubbles'
+    });
+    loading.present();
+    let dataa = await this.parqueservice.getElementosById(Id)
+        .then(async (data: any) => {
+        loading.dismiss();
+        if (data!=null)
+           {
+              this.Elemento = data;
+              this.Tipo =  this.Elemento.tipo;
+           }
+           else
+           {
+            let toast = await this.toastCtrl.create({
+                message: 'No existen elementos',
+                duration: 3000,
+                position: 'middle'
+              });
+            toast.present();
+           }
+        });
+  }
+
+
 
   async LoadPark(Id) {
     const loading = await this.loadingCtrl.create({
