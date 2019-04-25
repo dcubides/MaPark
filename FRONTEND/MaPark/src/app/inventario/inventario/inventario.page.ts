@@ -11,6 +11,7 @@ import { environment } from '@environments/environment';
 import { HttpClient, HttpHeaders, HttpRequest } from '@angular/common/http';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { Iinventarios } from 'src/app/Interfaces/iinventarios';
+import { InventarioModel } from './inventariomodel';
 
 
 
@@ -21,12 +22,17 @@ import { Iinventarios } from 'src/app/Interfaces/iinventarios';
 })
 export class InventarioPage implements OnInit {
   id;
-  todo: FormGroup;
-  urlPost = `${environment.urlDominio}/api/geoinventarios/`;
   longitud: number;
   latitud: number;
   Elementos: IElementos[] = [];
   inventario: Iinventarios[] = [];
+  inventarioGuardar = new InventarioModel();
+
+  todo = new FormGroup({
+    elementoID: new FormControl('', Validators.required),
+    estado: new FormControl('', Validators.required),
+    observaciones: new FormControl('', Validators.required),
+  });
 
   constructor(
     private routes: ActivatedRoute,
@@ -42,7 +48,6 @@ export class InventarioPage implements OnInit {
     private toastCtrl: ToastController,
     private modalController: ModalController
   ) {
-    this.inicializar();
   }
 
   ngOnInit() {
@@ -63,7 +68,6 @@ export class InventarioPage implements OnInit {
         if (data!=null)
            {
               this.Elementos = data;
-              //this.loadMap();
            }
            else
            {
@@ -77,16 +81,6 @@ export class InventarioPage implements OnInit {
         });
   }
 
-  inicializar(): void {
-    this.todo = this.formBuilder.group({
-      idparque: new FormControl(),
-      elemento: new FormControl('', Validators.required),
-      estado: new FormControl('', Validators.required),
-      observaciones: new FormControl('', Validators.required),
-     // coord_x: new FormControl('', Validators.required),
-    //  coord_y: new FormControl('', Validators.required)
-    });
-  }
 
   async logForm() {
 
@@ -96,42 +90,79 @@ export class InventarioPage implements OnInit {
     });
     loading.present();
 
-
     const header = new HttpHeaders().set('Content-Type', 'application/json');
 
-    let dataa = await this.http.post(this.urlPost, this.todo.value, {headers: header})
-                    .subscribe(async (data: any) => {
-                      loading.dismiss();
-                      if (data == null) {
-                        const toast = await this.toastController.create({
-                          message: 'Datos incorrectos.',
-                          duration: 3000,
-                          position: 'middle'
-                        });
-                        toast.present();
-                      } else {
-                        if (data === 0 || data === 400) {
-                          const toast = await this.toastController.create({
-                            message: 'Servicio no disponible en el momento',
-                            duration: 3000,
-                            position: 'middle'
-                          });
-                          toast.present();
-                        } else {
-                          console.log(data);
-                          this.inventario = data;
-                          const toast = await this.toastController.create({
-                            message: 'Elemento creado correctamente',
-                            duration: 3000,
-                            position: 'middle'
-                          });
-                          toast.present();
-                          this.storage.set('ParqueCreado', JSON.stringify(data));
-                          //this.navCtrl.navigateRoot('home');
-                          this.cargarModal();
-                        }
-                      }
-                  });
+    this.inventarioGuardar.parqueId = this.id;
+    this.inventarioGuardar.elementoID = this.todo.value.elementoID;
+    this.inventarioGuardar.estado = this.todo.value.estado;
+    this.inventarioGuardar.observaciones = this.todo.value.observaciones;
+
+    let datos = await this.serviceAPIService.addInventario(this.inventarioGuardar).then(
+      async (data: any) => {
+        loading.dismiss();
+        if (data==null) {
+          let toast = await this.toastController.create({
+            message: 'Elemento no se almaceno',
+            duration: 3000,
+            position: 'middle'
+          });
+          toast.present();
+        } else {
+          if (data === 0 || data === 400) {
+            let toast = await this.toastController.create({
+              message: 'Servicio no disponible',
+              duration: 3000,
+              position: 'middle'
+            });
+            toast.present();
+          } else {
+            let toast = await this.toastController.create({
+              message: 'Elemento almacenado correctamente',
+              duration: 3000,
+              position: 'middle'
+            });
+            toast.present();
+            this.storage.set('ParqueCreado', JSON.stringify(data));
+            this.inventario = data;
+            this.cargarModal();
+            this.todo.reset();
+          }
+        }
+      } );
+
+    // let dataa = await this.http.post(this.urlPost, this.todo, {headers: header})
+    //                 .subscribe(async (data: any) => {
+    //                   loading.dismiss();
+    //                   if (data == null) {
+    //                     const toast = await this.toastController.create({
+    //                       message: 'Datos incorrectos.',
+    //                       duration: 3000,
+    //                       position: 'middle'
+    //                     });
+    //                     toast.present();
+    //                   } else {
+    //                     if (data === 0 || data === 400) {
+    //                       const toast = await this.toastController.create({
+    //                         message: 'Servicio no disponible en el momento',
+    //                         duration: 3000,
+    //                         position: 'middle'
+    //                       });
+    //                       toast.present();
+    //                     } else {
+    //                       console.log(data);
+    //                       this.inventario = data;
+    //                       const toast = await this.toastController.create({
+    //                         message: 'Elemento creado correctamente',
+    //                         duration: 3000,
+    //                         position: 'middle'
+    //                       });
+    //                       toast.present();
+    //                       this.storage.set('ParqueCreado', JSON.stringify(data));
+    //                       //this.navCtrl.navigateRoot('home');
+    //                       this.cargarModal();
+    //                     }
+    //                   }
+    //               });
 
   }
 
@@ -139,7 +170,7 @@ export class InventarioPage implements OnInit {
       // Create a modal using MyModalComponent with some initial data
       const modal = await this.modalController.create({
         component: ModalUbicacionPage,
-        componentProps:{
+        componentProps: {
           modal: true,
           inventario: this.inventario,
         }

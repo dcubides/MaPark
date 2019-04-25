@@ -8,9 +8,12 @@
 </ion-header>
 
 <ion-content padding>
-
+ 
     <form [formGroup]="ubicacionForm" padding-right>
       <ion-list>
+          <ion-item>
+              <ion-label>Tipo de elemento: {{Tipo}}</ion-label>
+            </ion-item>
       <ion-item>
         <ion-label>LAT:</ion-label>
         <ion-input type="text" formControlName="coord_x" minlength="3" maxlength="20" value="{{latitud}}" required></ion-input>
@@ -21,12 +24,13 @@
           <ion-input type="text" formControlName="coord_y" minlength="3" maxlength="20" value="{{longitud}}" required></ion-input>
         </ion-item>
       </ion-list>
-        <ion-button type="submit"  expand="full"  (click)="cargarUbicacion()">
+        <ion-button color="success" type="submit"  expand="full"  (click)="cargarUbicacion()">
             <ion-icon name="locate"></ion-icon>  
           Obtener ubicación elemento
           </ion-button>
 
-        <ion-button type="submit"  expand="full" [disabled]="!ubicacionForm.valid" (click)="guardarUbicacionElemento()">
+        <ion-button color="success" type="submit"  expand="full" [disabled]="!ubicacionForm.valid" (click)="guardarUbicacionElemento()">
+          <ion-icon name="cloud-upload"></ion-icon>
           Guardar ubicación elemento
         </ion-button>
     </form>

@@ -86,6 +86,25 @@ getParquesById(Id) {
   });
 }
 
+getElementosById(Id) {
+  const urlService1 = this.urlService + 'api/GEOElementos/' + Id;
+
+  return new Promise(resolve => {
+    return this.http.get(urlService1)
+    .subscribe(
+      data => {
+        resolve(data);
+      }, err => {
+        if (err.status === 0 || err.status === 400) {
+          resolve(err.status);
+        } else {
+          resolve(null);
+        }
+      }
+    );
+  });
+}
+
 getElementos() {
   const urlService1 = this.urlService + 'api/GEOElementos/';
 
@@ -106,11 +125,31 @@ getElementos() {
 }
 
 addElementos(coordenadas) {
-  console.log(coordenadas + 'dce');
-  const urlService1 = this.urlService + 'api/GEOCordenadas/';
+  console.log(coordenadas);
+  const urlService1 = this.urlService + 'api/GEOCoordenadas/';
 
   return new Promise(resolve => {
     return this.http.post(urlService1, coordenadas)
+    .subscribe(
+      data => {
+        resolve(data);
+      }, err => {
+        if (err.status === 0 || err.status === 400) {
+          resolve(err.status);
+        } else {
+          resolve(null);
+        }
+      }
+    );
+  });
+}
+
+
+addInventario(inventario) {
+  const urlService1 = this.urlService + 'api/geoinventarios/';
+
+  return new Promise(resolve => {
+    return this.http.post(urlService1, inventario)
     .subscribe(
       data => {
         resolve(data);

@@ -9,6 +9,7 @@ import { environment } from '@environments/environment';
 import { HttpClient, HttpHeaders, HttpRequest } from '@angular/common/http';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { Iinventarios } from 'src/app/Interfaces/iinventarios';
+import { IElementos } from '../Interfaces/ielementos';
 
 
 
@@ -30,6 +31,8 @@ export class ModalUbicacionPage implements OnInit {
   latitud: number;
   dataInventario: Iinventarios;
   coordenadas = new CoordenadasModel();
+  Elementos: IElementos;
+  Tipo: string;
 
   constructor(
     private routes: ActivatedRoute,
@@ -45,19 +48,41 @@ export class ModalUbicacionPage implements OnInit {
     private toastCtrl: ToastController,
     private modalController: ModalController,
     private navParams: NavParams,
-    //private coordenadas: CoordenadasModel
   ) {
-    //this.inicializar();
+
   }
 
   ngOnInit() {
     this.dataInventario = this.navParams.data.inventario;
-    console.log(this.dataInventario);
+    this.LoadElemento(this.dataInventario.elementoID);
   }
 
-  inicializar() {
-
+  async LoadElemento(Id) {
+    const loading = await this.loadCtrl.create({
+      message: 'Cargando...',
+      spinner: 'bubbles'
+    });
+    loading.present();
+    let dataa = await this.serviceAPIService.getElementosById(Id)
+        .then(async (data: any) => {
+        loading.dismiss();
+        if (data!=null)
+           {
+              this.Elementos = data;
+              this.Tipo =  this.Elementos.tipo;
+           }
+           else
+           {
+            let toast = await this.toastCtrl.create({
+                message: 'No existen elementos',
+                duration: 3000,
+                position: 'middle'
+              });
+            toast.present();
+           }
+        });
   }
+
 
   async guardarUbicacionElemento() {
     const loading = await this.loadCtrl.create({
@@ -66,13 +91,9 @@ export class ModalUbicacionPage implements OnInit {
     });
     loading.present();
 
-
-
     this.coordenadas.inventarioId = this.dataInventario.id;
-    this.coordenadas.coord_x = this.ubicacionForm.value.coord_x;
-    this.coordenadas.coord_y = this.ubicacionForm.value.coord_y;
-
-    console.log(this.coordenadas);
+    this.coordenadas.coord_x =  parseFloat(this.ubicacionForm.value.coord_x);
+    this.coordenadas.coord_y = parseFloat(this.ubicacionForm.value.coord_y);
 
 
     let datos = await this.serviceAPIService.addElementos(this.coordenadas).then(
@@ -100,7 +121,11 @@ export class ModalUbicacionPage implements OnInit {
             position: 'middle'
           });
           toast.present();
-          this.cerrarModal();
+          this.latitud = null;
+          this.longitud = null;
+          if (this.Elementos.tipo === 'Punto') {
+           this.cerrarModal();
+          }
         }
       }
     } );
@@ -125,10 +150,6 @@ export class ModalUbicacionPage implements OnInit {
       }
     );
 
-   // this.latitud = myLatLng.lat;
-  //  this.longitud = myLatLng.lng;
-
-    //loading.dismiss();
   }
 
   private async dondEestoy() {
