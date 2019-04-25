@@ -12,8 +12,8 @@
   <ion-item>
     <ion-icon name="arrow-dropright"></ion-icon>
     <ion-label> Elemento: </ion-label>
-   <ion-select placeholder="Seleccione">
-       <ion-select-option *ngFor="let item of Elementos" value="{{item.id}}" (blur)=(cargarElemento())>{{ item.elemento }}</ion-select-option>
+   <ion-select placeholder="Seleccione" [(ngModel)]="itemSelected" (ionChange)="LoadElemento(itemSelected)">
+       <ion-select-option *ngFor="let item of Elementos" value="{{item.id}}">{{ item.elemento }}</ion-select-option>
      </ion-select>
  </ion-item>
 
@@ -29,7 +29,7 @@
 
         </div>
         <div class="detaillBox__descripton_data detaillBox__descripton_data-address">
-          {{ parkDetail.localidad}}
+          {{ parkDetail.localidad }}
         </div>
 
         <ion-fab vertical="center" horizontal="end" slot="fixed" >

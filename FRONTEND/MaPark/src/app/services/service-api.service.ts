@@ -164,4 +164,22 @@ addInventario(inventario) {
   });
 }
 
+getInventarioId(idparque, idelemento) {
+  const urlService1 = this.urlService + 'api/geoinventarios/' + idparque + '/' + idelemento;
+
+  return new Promise(resolve => {
+    return this.http.get(urlService1)
+      .subscribe(
+        data => {
+          resolve(data);
+        }, err => {
+          if (err.status === 0 || err.status === 400) {
+            resolve(err.status);
+          } else {
+            resolve(null);
+          }
+        });
+  });
+  }
+
 }

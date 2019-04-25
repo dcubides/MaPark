@@ -3,7 +3,7 @@ export interface IParques {
     Identificador_parque: string;
     Estrato: number;
     UPZ: number;
-    Localidad: string;
+    localidad: string;
     estado_Certificacion: string;
     Clasificacion_Parque: string;
     nombre_Parque: string;

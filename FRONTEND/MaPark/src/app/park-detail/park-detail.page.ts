@@ -6,6 +6,7 @@ import { ServiceAPIService } from '../services/service-api.service';
 import { IParques } from '../Interfaces/iparques';
 import { Storage } from '@ionic/storage';
 import { IElementos } from '../Interfaces/ielementos';
+import { InventarioModel } from '../inventario/inventario/inventariomodel';
 
 declare var google;
 @Component({
@@ -22,6 +23,8 @@ export class ParkDetailPage implements OnInit {
   Elementos: IElementos[] = [];
   Elemento: IElementos;
   Tipo: string;
+  itemSelected: number;
+  inventario: InventarioModel;
 
   constructor(
     private routes: ActivatedRoute,
@@ -64,34 +67,9 @@ export class ParkDetailPage implements OnInit {
         });
   }
 
-  async cargarElemento() {
-
-    const loading = await this.loadingCtrl.create({
-      message: 'Cargando...',
-      spinner: 'bubbles'
-    });
-    loading.present();
-    let dataa = await this.parqueservice.getInventarioId(this.id, this.Elemento.id)
-        .then(async (data: any) => {
-        loading.dismiss();
-        if (data!=null)
-           {
-              this.Elementos = data;
-           }
-           else
-           {
-            let toast = await this.toastCtrl.create({
-                message: 'No existen elementos',
-                duration: 3000,
-                position: 'middle'
-              });
-            toast.present();
-           }
-        });
-
-  }
 
   async LoadElemento(Id) {
+
     const loading = await this.loadingCtrl.create({
       message: 'Cargando...',
       spinner: 'bubbles'
@@ -104,6 +82,9 @@ export class ParkDetailPage implements OnInit {
            {
               this.Elemento = data;
               this.Tipo =  this.Elemento.tipo;
+              if (this.Elemento != null) {
+                this.cargarInventarioPorElemento();
+              }
            }
            else
            {
@@ -115,7 +96,39 @@ export class ParkDetailPage implements OnInit {
             toast.present();
            }
         });
+
   }
+
+  async cargarInventarioPorElemento() {
+
+    const loading = await this.loadingCtrl.create({
+      message: 'Cargando...',
+      spinner: 'bubbles'
+    });
+    loading.present();
+    console.log(this.id, this.Elemento.id);
+
+    let dataa = await this.parqueservice.getInventarioId(this.id, this.Elemento.id)
+        .then(async (data: any) => {
+        loading.dismiss();
+        if (data!=null)
+           {
+              this.inventario = data;
+              console.log(this.inventario);
+           }
+           else
+           {
+            let toast = await this.toastCtrl.create({
+                message: 'No existen elementos',
+                duration: 3000,
+                position: 'middle'
+              });
+            toast.present();
+           }
+        });
+
+  }
+
 
 
 

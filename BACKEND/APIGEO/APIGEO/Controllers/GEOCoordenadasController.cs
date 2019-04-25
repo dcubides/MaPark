@@ -36,7 +36,13 @@ namespace APIGEO.Controllers
                 return BadRequest(ModelState);
             }
 
-            var gEOCoordenadas = await _context.GEOCoordenadas.SingleOrDefaultAsync(m => m.Id == id);
+           // var gEOCoordenadas = await _context.GEOCoordenadas.SingleOrDefaultAsync(m => m.Id == id);
+
+            List<GEOCoordenadas> gEOCoordenadas = null;
+
+
+            gEOCoordenadas = _context.GEOCoordenadas.Where(m => m.InventarioId == id).ToList<GEOCoordenadas>();
+
 
             if (gEOCoordenadas == null)
             {
@@ -45,6 +51,26 @@ namespace APIGEO.Controllers
 
             return Ok(gEOCoordenadas);
         }
+
+
+        //// GET: api/GEOCoordenadas/5
+        //[HttpGet("{id}")]
+        //public async Task<IActionResult> GetGEOCoordenadas([FromRoute] int id)
+        //{
+        //    if (!ModelState.IsValid)
+        //    {
+        //        return BadRequest(ModelState);
+        //    }
+
+        //    var gEOCoordenadas = await _context.GEOCoordenadas.SingleOrDefaultAsync(m => m.Id == id);
+
+        //    if (gEOCoordenadas == null)
+        //    {
+        //        return NotFound();
+        //    }
+
+        //    return Ok(gEOCoordenadas);
+        //}
 
         // PUT: api/GEOCoordenadas/5
         [HttpPut("{id}")]

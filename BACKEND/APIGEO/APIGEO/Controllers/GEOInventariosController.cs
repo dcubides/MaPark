@@ -27,16 +27,26 @@ namespace APIGEO.Controllers
             return _context.GEOInventario;
         }
 
-        // GET: api/GEOInventarios/5
-        [HttpGet("{id}")]
-        public async Task<IActionResult> GetGEOInventario([FromRoute] int id)
+        // GET: api/GEOInventarios/idparque/idelemento
+        [HttpGet("{idparque}/{idelemento}")]
+        public async Task<IActionResult> GetGEOInventarioId([FromRoute] int idparque, [FromRoute] int idelemento)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            var gEOInventario = await _context.GEOInventario.SingleOrDefaultAsync(m => m.Id == id);
+            //var gEOInventario = await _context.GEOInventario.FirstOrDefaultAsync(m => m.ParqueId == idparque && m.ElementoID == idelemento);
+            //var gEOInventario = await _context.GEOInventario
+             //                           .Where(m => m.ParqueId == idparque && m.ElementoID == idelemento)
+              //                          .FirstOrDefaultAsync();
+
+            List<GEOInventario> gEOInventario = null;
+
+
+             gEOInventario =  _context.GEOInventario.Where(m => m.ParqueId == idparque && m.ElementoID == idelemento).ToList<GEOInventario>();
+
+          //  return resultado;
 
             if (gEOInventario == null)
             {
@@ -45,6 +55,25 @@ namespace APIGEO.Controllers
 
             return Ok(gEOInventario);
         }
+
+        // GET: api/GEOInventarios/5
+        //[HttpGet("{id}")]
+        //public async Task<IActionResult> GetGEOInventario([FromRoute] int id)
+        //{
+        //    if (!ModelState.IsValid)
+        //    {
+        //        return BadRequest(ModelState);
+        //    }
+
+        //    var gEOInventario = await _context.GEOInventario.SingleOrDefaultAsync(m => m.Id == id);
+
+        //    if (gEOInventario == null)
+        //    {
+        //        return NotFound();
+        //    }
+
+        //    return Ok(gEOInventario);
+        //}
 
         // PUT: api/GEOInventarios/5
         [HttpPut("{id}")]
