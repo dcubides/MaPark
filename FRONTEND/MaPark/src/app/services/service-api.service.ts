@@ -182,4 +182,22 @@ getInventarioId(idparque, idelemento) {
   });
   }
 
+  getCoordenadaElemento(idInventario) {
+    const urlService1 = this.urlService + 'api/geocoordenadas/' + idInventario;
+  
+    return new Promise(resolve => {
+      return this.http.get(urlService1)
+        .subscribe(
+          data => {
+            resolve(data);
+          }, err => {
+            if (err.status === 0 || err.status === 400) {
+              resolve(err.status);
+            } else {
+              resolve(null);
+            }
+          });
+    });
+    }
+
 }
