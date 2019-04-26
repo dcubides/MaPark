@@ -44,3 +44,4 @@ C:\Users\david.cubides\Documents\IONIC\MaPark\BACKEND\APIGEO\APIGEO\obj\Debug\ne
 C:\Users\david.cubides\Documents\IONIC\MaPark\BACKEND\APIGEO\APIGEO\obj\Debug\netcoreapp2.0\APIGEO.AssemblyInfo.cs
 C:\Users\david.cubides\Documents\IONIC\MaPark\BACKEND\APIGEO\APIGEO\obj\Debug\netcoreapp2.0\APIGEO.dll
 C:\Users\david.cubides\Documents\IONIC\MaPark\BACKEND\APIGEO\APIGEO\obj\Debug\netcoreapp2.0\APIGEO.pdb
+C:\Users\david.cubides\Documents\IONIC\MaPark\BACKEND\APIGEO\APIGEO\obj\Debug\netcoreapp2.0\APIGEO.csprojAssemblyReference.cache

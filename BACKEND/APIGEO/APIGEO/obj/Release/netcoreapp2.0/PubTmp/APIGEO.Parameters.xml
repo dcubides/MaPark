@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <parameters>
-  <parameter name="IIS Web Application Name" description="" value="APIGEOLOCALIZACION" tags="IisApp">
+  <parameter name="IIS Web Application Name" description="" value="APIGEOPARQUES" tags="IisApp">
     <parameterEntry kind="ProviderPath" scope="IisApp" match="^C:\\Users\\david\.cubides\\Documents\\IONIC\\MaPark\\BACKEND\\APIGEO\\APIGEO\\obj\\Release\\netcoreapp2\.0\\PubTmp\\Out\\$" />
   </parameter>
 </parameters>
