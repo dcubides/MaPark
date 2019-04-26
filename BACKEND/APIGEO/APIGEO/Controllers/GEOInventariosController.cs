@@ -29,31 +29,31 @@ namespace APIGEO.Controllers
 
         // GET: api/GEOInventarios/idparque/idelemento
         [HttpGet("{idparque}/{idelemento}")]
-        public async Task<IActionResult> GetGEOInventarioId([FromRoute] int idparque, [FromRoute] int idelemento)
+        public  List<GEOInventario> GetGEOInventarioId([FromRoute] int idparque, [FromRoute] int idelemento)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+            //if (!ModelState.IsValid)
+            //{
+            //    return BadRequest(ModelState);
+            //}
 
             //var gEOInventario = await _context.GEOInventario.FirstOrDefaultAsync(m => m.ParqueId == idparque && m.ElementoID == idelemento);
             //var gEOInventario = await _context.GEOInventario
              //                           .Where(m => m.ParqueId == idparque && m.ElementoID == idelemento)
               //                          .FirstOrDefaultAsync();
 
-            List<GEOInventario> gEOInventario = null;
+            List<GEOInventario> gEOInventario =  null;
 
 
              gEOInventario =  _context.GEOInventario.Where(m => m.ParqueId == idparque && m.ElementoID == idelemento).ToList<GEOInventario>();
 
-          //  return resultado;
+            return gEOInventario;
 
-            if (gEOInventario == null)
-            {
-                return NotFound();
-            }
+            //if (gEOInventario == null)
+            //{
+            //    return NotFound();
+            //}
 
-            return Ok(gEOInventario);
+            //return Ok(gEOInventario);
         }
 
         // GET: api/GEOInventarios/5

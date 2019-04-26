@@ -10,3 +10,15 @@ C:\Users\davidc\Documents\DESARROLLO\NETCORE\APIGEO\APIGEO\obj\Release\netcoreap
 C:\Users\davidc\Documents\DESARROLLO\NETCORE\APIGEO\APIGEO\obj\Release\netcoreapp2.0\APIGEO.dll
 C:\Users\davidc\Documents\DESARROLLO\NETCORE\APIGEO\APIGEO\obj\Release\netcoreapp2.0\APIGEO.pdb
 C:\Users\davidc\Documents\DESARROLLO\NETCORE\APIGEO\APIGEO\obj\Release\netcoreapp2.0\APIGEO.csprojAssemblyReference.cache
+C:\Users\david.cubides\Documents\IONIC\MaPark\BACKEND\APIGEO\APIGEO\bin\Release\netcoreapp2.0\APIGEO.deps.json
+C:\Users\david.cubides\Documents\IONIC\MaPark\BACKEND\APIGEO\APIGEO\bin\Release\netcoreapp2.0\APIGEO.runtimeconfig.json
+C:\Users\david.cubides\Documents\IONIC\MaPark\BACKEND\APIGEO\APIGEO\bin\Release\netcoreapp2.0\APIGEO.runtimeconfig.dev.json
+C:\Users\david.cubides\Documents\IONIC\MaPark\BACKEND\APIGEO\APIGEO\bin\Release\netcoreapp2.0\APIGEO.dll
+C:\Users\david.cubides\Documents\IONIC\MaPark\BACKEND\APIGEO\APIGEO\bin\Release\netcoreapp2.0\APIGEO.pdb
+C:\Users\david.cubides\Documents\IONIC\MaPark\BACKEND\APIGEO\APIGEO\obj\Release\netcoreapp2.0\APIGEO.csprojAssemblyReference.cache
+C:\Users\david.cubides\Documents\IONIC\MaPark\BACKEND\APIGEO\APIGEO\obj\Release\netcoreapp2.0\APIGEO.csproj.CoreCompileInputs.cache
+C:\Users\david.cubides\Documents\IONIC\MaPark\BACKEND\APIGEO\APIGEO\obj\Release\netcoreapp2.0\UserSecretsAssemblyInfo.cs
+C:\Users\david.cubides\Documents\IONIC\MaPark\BACKEND\APIGEO\APIGEO\obj\Release\netcoreapp2.0\APIGEO.AssemblyInfoInputs.cache
+C:\Users\david.cubides\Documents\IONIC\MaPark\BACKEND\APIGEO\APIGEO\obj\Release\netcoreapp2.0\APIGEO.AssemblyInfo.cs
+C:\Users\david.cubides\Documents\IONIC\MaPark\BACKEND\APIGEO\APIGEO\obj\Release\netcoreapp2.0\APIGEO.dll
+C:\Users\david.cubides\Documents\IONIC\MaPark\BACKEND\APIGEO\APIGEO\obj\Release\netcoreapp2.0\APIGEO.pdb

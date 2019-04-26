@@ -29,12 +29,12 @@ namespace APIGEO.Controllers
 
         // GET: api/GEOCoordenadas/5
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetGEOCoordenadas([FromRoute] int id)
+        public  List<GEOCoordenadas> GetGEOCoordenadas([FromRoute] int id)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+            //if (!ModelState.IsValid)
+            //{
+            //    return BadRequest(ModelState);
+            //}
 
            // var gEOCoordenadas = await _context.GEOCoordenadas.SingleOrDefaultAsync(m => m.Id == id);
 
@@ -43,13 +43,14 @@ namespace APIGEO.Controllers
 
             gEOCoordenadas = _context.GEOCoordenadas.Where(m => m.InventarioId == id).ToList<GEOCoordenadas>();
 
+            return gEOCoordenadas;
 
-            if (gEOCoordenadas == null)
-            {
-                return NotFound();
-            }
+            //if (gEOCoordenadas == null)
+            //{
+            //    return NotFound();
+            //}
 
-            return Ok(gEOCoordenadas);
+            //return Ok(gEOCoordenadas);
         }
 
 
