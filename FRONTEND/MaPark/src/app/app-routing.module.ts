@@ -31,7 +31,10 @@ const routes: Routes = [
    loadChildren: './inventario/inventario/inventario.module#InventarioPageModule'
   },
   { path: 'modal-ubicacion',
-   loadChildren: './modal-ubicacion/modal-ubicacion.module#ModalUbicacionPageModule' }
+   loadChildren: './modal-ubicacion/modal-ubicacion.module#ModalUbicacionPageModule' },
+  { path: 'policia',
+    loadChildren: './policia/policia.module#PoliciaPageModule' }
+
 
 ];
 

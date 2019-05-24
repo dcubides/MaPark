@@ -200,4 +200,25 @@ getInventarioId(idparque, idelemento) {
     });
     }
 
+
+    getCuadrantes() {
+     // const urlService1 = 'https://gisponal.policia.gov.co/arcgis/rest/services/CAPAS/MNVCC_CUADRANTES/FeatureServer/0/query';
+
+      // tslint:disable-next-line:max-line-length
+      const urlService1 = 'https://gisponal.policia.gov.co/arcgis/rest/services/CAPAS/MNVCC_CUADRANTES/FeatureServer/1/query?returnGeometry=true&where=1%3D1&outSr=4326&outFields=*&inSr=4326&geometry=%7B%22xmin%22%3A-74.124755859375%2C%22ymin%22%3A4.653079918274051%2C%22xmax%22%3A-74.11376953125%2C%22ymax%22%3A4.664029951910404%2C%22spatialReference%22%3A%7B%22wkid%22%3A4326%7D%7D&geometryType=esriGeometryEnvelope&spatialRel=esriSpatialRelIntersects&geometryPrecision=6&maxAllowableOffset=0.000006626634036786113&f=json';
+
+      return new Promise(resolve => {
+        return this.http.get(urlService1)
+          .subscribe(
+            data => {
+              resolve(data);
+            }, err => {
+              if (err.status === 0 || err.status === 400) {
+                resolve(err.status);
+              } else {
+                resolve(null);
+              }
+            });
+      });
+      }
 }

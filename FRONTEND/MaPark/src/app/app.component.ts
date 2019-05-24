@@ -27,6 +27,11 @@ export class AppComponent {
       icon: 'add-circle-outline'
     },
     {
+      title: 'Policia',
+      url: '/policia',
+      icon: 'walk'
+    },
+    {
       title: 'Salir',
       url: '/',
       icon: 'exit',
